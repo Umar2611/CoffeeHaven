@@ -8,7 +8,7 @@
 
 <?php 
 include 'header.php';
-include 'fonts.php'
+include 'fonts.php';
 ?>
 
 <!-- IMAGE -->
@@ -24,12 +24,12 @@ include 'fonts.php'
 <div class="container">
 
 
-		<h4 class="text-center" style="font-family: arial; padding-top: 10px; padding-bottom: 10px; font-style: italic; line-height: 29px; border-top: 2px solid #ffffff; border-bottom: 2px solid #ffffff; b">Coffee Haven adalah coffee shop yang berdiri sejak tahun 2025, menghadirkan pengalaman ngopi yang mewah dan berkelas.
+		<h4 class="text-center" style="font-family: arial; padding-top: 10px; padding-bottom: 10px; font-style: italic; line-height: 29px; border-top: 2px solid #ffffff; border-bottom: 2px solid #ffffff;">Coffee Haven adalah coffee shop yang berdiri sejak tahun 2025, menghadirkan pengalaman ngopi yang mewah dan berkelas.
 Dengan cita rasa terbaik dan suasana elegan, kami siap menjadi tempat favorit Anda untuk menikmati setiap momen.
 </h4>
 
 
-	<h2 style=" width: 100%; border-bottom: 4px solidrgb(220, 207, 200); margin-top: 80px;"><b style="color: #ffffff ">Produk Kami</b></h2>
+	<h2 style=" width: 100%; border-bottom: 4px solid rgb(220, 207, 200); margin-top: 80px;"><b style="color: #ffffff ">Produk Kami</b></h2>
 
 	<div class="row">
 		<?php 
