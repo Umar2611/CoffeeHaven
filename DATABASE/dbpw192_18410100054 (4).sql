@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2020 at 07:16 AM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.2.32
+-- Generation Time: Jul 01, 2025 at 07:29 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,7 +31,7 @@ CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
   `username` varchar(200) NOT NULL,
   `password` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `admin`
@@ -52,7 +52,7 @@ CREATE TABLE `bom_produk` (
   `kode_produk` varchar(100) NOT NULL,
   `nama_produk` varchar(200) NOT NULL,
   `kebutuhan` varchar(200) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `bom_produk`
@@ -82,7 +82,7 @@ CREATE TABLE `customer` (
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `telp` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `customer`
@@ -91,7 +91,8 @@ CREATE TABLE `customer` (
 INSERT INTO `customer` (`kode_customer`, `nama`, `email`, `username`, `password`, `telp`) VALUES
 ('C0002', 'Rafi Akbar', 'a.rafy@gmail.com', 'rafi', '$2y$10$/UjGYbisTPJhr8MgmT37qOXo1o/HJn3dhafPoSYbOlSN1E7olHIb.', '0856748564'),
 ('C0003', 'Nagita Silvana', 'bambang@gmail.com', 'Nagita', '$2y$10$47./qEeA/y3rNx3UkoKmkuxoAtmz4ebHSR0t0Bc.cFEEg7cK34M3C', '087804616097'),
-('C0004', 'Nadiya', 'nadiya@gmail.com', 'nadiya', '$2y$10$6wHH.7rF1q3JtzKgAhNFy.4URchgJC8R.POT1osTAWmasDXTTO7ZG', '0898765432');
+('C0004', 'Nadiya', 'nadiya@gmail.com', 'nadiya', '$2y$10$6wHH.7rF1q3JtzKgAhNFy.4URchgJC8R.POT1osTAWmasDXTTO7ZG', '0898765432'),
+('C0005', 'Muhammad Raihan', 'raihan302002@gmail.com', 'Eannn', '$2y$10$vEHdDWurGj6iaFUI6d/S9e7SGrKCwYJdYZ5bLQw4F/nqStx/dZl5y', '085813515939');
 
 -- --------------------------------------------------------
 
@@ -106,7 +107,7 @@ CREATE TABLE `inventory` (
   `satuan` varchar(200) NOT NULL,
   `harga` int(11) NOT NULL,
   `tanggal` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `inventory`
@@ -132,7 +133,7 @@ CREATE TABLE `keranjang` (
   `nama_produk` varchar(100) NOT NULL,
   `qty` int(11) NOT NULL,
   `harga` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `keranjang`
@@ -140,7 +141,8 @@ CREATE TABLE `keranjang` (
 
 INSERT INTO `keranjang` (`id_keranjang`, `kode_customer`, `kode_produk`, `nama_produk`, `qty`, `harga`) VALUES
 (16, 'C0003', 'P0002', 'Maryam', 5, 15000),
-(17, 'C0003', 'P0003', 'Kue tart coklat', 2, 100000);
+(17, 'C0003', 'P0003', 'Kue tart coklat', 2, 100000),
+(22, '', '', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -154,16 +156,19 @@ CREATE TABLE `produk` (
   `image` text NOT NULL,
   `deskripsi` text NOT NULL,
   `harga` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `produk`
 --
 
 INSERT INTO `produk` (`kode_produk`, `nama`, `image`, `deskripsi`, `harga`) VALUES
-('P0001', 'Roti Sobek', '5f1d915d27dc3.jpg', '																								Roti Enak Sobek Sobek aww\r\n																					', 10000),
-('P0002', 'Maryam', '5f1d9154715a4.jpg', '				Roti araym\r\n						', 15000),
-('P0003', 'Kue tart coklat', '5f1d924614831.jpg', 'Kuetar dengan varian rasa coklat enak dan lumer rasanya\r\n			', 100000);
+('P0001', 'Americano', 'Americano_Coffe.jpg', 'Kopi hitam dengan rasa ringan, dibuat dari espresso yang ditambahkan air panas.\r\n													\r\n																					', 25000),
+('P0002', 'Expressoo', 'Expresso_Coffe.jpg', 'Kopi hitam pekat tanpa campuran, disajikan dalam takaran kecil tapi penuh rasa.\r\n', 20000),
+('P0003', 'Latte', 'Latte_Coffe.jpg', 'Perpaduan espresso dan susu panas dengan busa tipis di atasnya — lembut dan creamy.\r\n', 30000),
+('P0004', 'Arabica', 'Arabica_Coffe.jpg', 'Single origin Arabica dengan metode seduh manual (V60 / French Press), cita rasa halus dan berkarakter.\r\n', 30000),
+('P0005', 'Machiato', 'Macchiato_Coffe.jpg', 'Kue cokelat padat dan fudgy (kadang chewy), memiliki tekstur lembut dan rasa cokelat yang intens. Sering diberi topping kacang, keju, atau tambahan saus cokelat.\r\n', 28000),
+('P0006', 'Affogato', 'Affogato_Coffe.jpg', 'Paduan unik antara espresso panas yang disiramkan ke atas es krim vanila. Perpaduan pahit-manis yang menyegarkan — dessert dan kopi dalam satu sajian.\r\n', 40000);
 
 -- --------------------------------------------------------
 
@@ -188,7 +193,7 @@ CREATE TABLE `produksi` (
   `terima` varchar(200) NOT NULL,
   `tolak` varchar(200) NOT NULL,
   `cek` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `produksi`
@@ -196,11 +201,19 @@ CREATE TABLE `produksi` (
 
 INSERT INTO `produksi` (`id_order`, `invoice`, `kode_customer`, `kode_produk`, `nama_produk`, `qty`, `harga`, `status`, `tanggal`, `provinsi`, `kota`, `alamat`, `kode_pos`, `terima`, `tolak`, `cek`) VALUES
 (8, 'INV0001', 'C0002', 'P0003', 'Kue tart coklat', 1, 100000, 'Pesanan Baru', '2020-07-27', 'Jawa Timur', 'Surabaya', 'Jl.Tanah Merah Indah 1', '60129', '2', '1', 1),
-(9, 'INV0002', 'C0002', 'P0001', 'Roti Sobek', 3, 10000, 'Pesanan Baru', '2020-07-27', 'Jawa Barat', 'Bandung', 'Jl.Jati Nangor Blok C, 10', '30712', '0', '0', 1),
+(9, 'INV0002', 'C0002', 'P0001', 'Roti Sobek', 3, 10000, 'Pesanan Baru', '2020-07-27', 'Jawa Barat', 'Bandung', 'Jl.Jati Nangor Blok C, 10', '30712', '2', '1', 1),
 (10, 'INV0003', 'C0003', 'P0002', 'Maryam', 2, 15000, '0', '2020-07-27', 'Jawa Tengah', 'Yogyakarta', 'Jl.Malioboro, Blok A 10D', '30123', '1', '0', 0),
 (11, 'INV0003', 'C0003', 'P0003', 'Kue tart coklat', 1, 100000, '0', '2020-07-27', 'Jawa Tengah', 'Yogyakarta', 'Jl.Malioboro, Blok A 10D', '30123', '1', '0', 0),
 (12, 'INV0003', 'C0003', 'P0001', 'Roti Sobek', 1, 10000, '0', '2020-07-27', 'Jawa Tengah', 'Yogyakarta', 'Jl.Malioboro, Blok A 10D', '30123', '1', '0', 0),
-(13, 'INV0004', 'C0004', 'P0002', 'Maryam', 1, 15000, 'Pesanan Baru', '2020-07-26', 'Jawa Timur', 'Sidoarjo', 'Jl.KH Syukur Blok C 18 A', '50987', '0', '0', 0);
+(13, 'INV0004', 'C0004', 'P0002', 'Maryam', 1, 15000, 'Pesanan Baru', '2020-07-26', 'Jawa Timur', 'Sidoarjo', 'Jl.KH Syukur Blok C 18 A', '50987', '2', '1', 0),
+(14, 'INV0005', 'C0005', 'P0002', 'Cromboloni', 2, 20000, 'Pesanan Baru', '2525-06-20', 'dki jakarta', 'jakarta timur', 'jl condet', '13530', '2', '1', 0),
+(15, 'INV0005', 'C0005', 'P0008', 'Misu Cake', 1, 22000, 'Pesanan Baru', '2525-06-20', 'dki jakarta', 'jakarta timur', 'jl condet', '13530', '2', '1', 0),
+(16, 'INV0006', 'C0005', 'P0002', 'Cromboloni', 2, 20000, 'Pesanan Baru', '2525-06-29', '', '', '', '', '0', '0', 0),
+(17, 'INV0006', 'C0005', 'P0008', 'Misu Cake', 1, 22000, 'Pesanan Baru', '2525-06-29', '', '', '', '', '0', '0', 0),
+(18, 'INV0006', 'C0005', 'P0001', 'Cookies Chocolate', 1, 8000, 'Pesanan Baru', '2525-06-29', '', '', '', '', '0', '0', 0),
+(19, 'INV0007', 'C0005', 'P0006', 'Affogato', 1, 40000, 'Pesanan Baru', '2525-06-30', 'Jakarta Timur', 'Jakarta Timur', 'jl. almaghfiroh rt 06 rw 04', '13530', '0', '0', 0),
+(20, 'INV0008', 'C0005', 'P0005', 'Machiato', 1, 8000, 'Pesanan Baru', '2525-07-01', 'Jakarta Timur', 'Jakarta Timur', 'jl. almaghfiroh rt 06 rw 04', '13530', '0', '0', 0),
+(21, 'INV0009', 'C0005', 'P0005', 'Machiato', 1, 28000, 'Pesanan Baru', '2525-07-01', 'Jakarta Timur', 'Jakarta Timur', 'jl. almaghfiroh rt 06 rw 04', '13530', '0', '0', 0);
 
 -- --------------------------------------------------------
 
@@ -214,7 +227,7 @@ CREATE TABLE `report_cancel` (
   `kode_produk` varchar(100) NOT NULL,
   `jumlah` varchar(100) NOT NULL,
   `tanggal` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -228,7 +241,7 @@ CREATE TABLE `report_inventory` (
   `nama_bahanbaku` varchar(100) NOT NULL,
   `jml_stok_bk` int(11) NOT NULL,
   `tanggal` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -242,7 +255,7 @@ CREATE TABLE `report_omset` (
   `jumlah` int(11) NOT NULL,
   `total_omset` int(11) NOT NULL,
   `tanggal` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -257,7 +270,7 @@ CREATE TABLE `report _penjualan` (
   `nama_produk` varchar(100) NOT NULL,
   `jumlah_terjual` int(11) NOT NULL,
   `tanggal` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -272,7 +285,7 @@ CREATE TABLE `report_produksi` (
   `nama_produk` varchar(100) NOT NULL,
   `qty` int(11) NOT NULL,
   `tanggal` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -288,7 +301,7 @@ CREATE TABLE `report_profit` (
   `jumlah` varchar(11) NOT NULL,
   `total_profit` varchar(11) NOT NULL,
   `tanggal` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -381,13 +394,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `produksi`
 --
 ALTER TABLE `produksi`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `report_cancel`
