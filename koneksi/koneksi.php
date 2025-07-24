@@ -1,3 +1,3 @@
 <?php 
-$conn = mysqli_connect("localhost", "root", "", "dbpw192_18410100054", 3310);
+$conn = mysqli_connect("sql103.infinityfree.com", "if0_39371486", "wEyMSIXMG6", "if0_39371486_coffee_haven", 3306);
  ?>
